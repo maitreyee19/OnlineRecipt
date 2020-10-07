@@ -5,7 +5,7 @@ import {
   Route,
   useLocation
 } from "react-router-dom";
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import NavBar from './Components/NavBar.js';
 import { OrderList, AccountCard } from './Components/Receipt.js'
@@ -45,32 +45,44 @@ function Receipt() {
   if (query.get("receiptid")) receiptID = query.get("receiptid");
   return (
     <div>
-      <div>Show receipt for #{receiptID} </div>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
+        <h3>
+          Bill ID # {receiptID}
+        </h3>
+        <div >
+          <ul className="bill_detail">
+            <li>
+              item quantity : 1
+            </li>
+            <li>
+              item price : 10
+            </li>
+            <li>
+              Tax : .94
+            </li>
+            <li>
+             ________________
+            </li>
+            <li>
+              Total : 10.94
+            </li>
+          </ul>
+        </div>
       </header>
     </div>)
 }
 
 
 function Home() {
-  let account = []
-  for (let i = 0; i < 10; ++i) {
-    account.push(<AccountCard id={i} key={i} />)
+  let accounts = ["My Account", "Order List", "Settings", "Contact Us"]
+  let accountCards =[];
+  for (let i = 0; i < accounts.length; ++i) {
+    accountCards.push(<AccountCard id={i} key={i} account={accounts[i]}/>)
   }
   return (
     <div >
-      {account}
+      {accountCards}
     </div>)
 }
 

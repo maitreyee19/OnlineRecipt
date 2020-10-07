@@ -13,8 +13,6 @@ export default function NavBar(navVal) {
     history.push("/home")
   }
   function goToList(newValue){
-    console.log(newValue);
-    setValue(newValue)
     history.push("/orderList")
   }
   function goToReceipt(){
@@ -24,7 +22,7 @@ export default function NavBar(navVal) {
     <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
-        goToList(newValue);
+        setValue(newValue);
       }}
     >
       <BottomNavigationAction onClick={goToHome} label="Recents" icon={<HomeIcon />} />
